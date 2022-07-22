@@ -4,6 +4,7 @@ import React from 'react'
 
 function DropDownMenu(props) {
     const {colorMode,toggleColorMode}= useColorMode()
+    var key=0
   return (
     
         <div>
@@ -17,8 +18,9 @@ function DropDownMenu(props) {
          {
           props.menuItems?
          <MenuList style={{color:colorMode==='light'?'black':'white',boxShadow:'1px -3px 18px 3px rgba(0,0,0,0.61)'}} >
-            {props.menuItems.map(item=> 
-            <MenuItem > 
+            {props.menuItems.map((item)=> 
+            <MenuItem  > 
+              
               <Flex>
                   <Center >
                       {item.icon?item.icon:null}
