@@ -11,7 +11,7 @@ function DropDownMenu(props) {
       {({ isOpen }) => (
         <>
           <MenuButton style={{backgroundColor:'transparent',width:'100%',border:'1px solid'}} isActive={isOpen} as={Button} rightIcon={<ChevronDownIcon />} >
-            {isOpen ? 'Close' : 'Open'}
+            {props.openText? (isOpen ? props.openText : props.text):props.text}
           </MenuButton>
 
          {

@@ -6,7 +6,9 @@ import DropDownMenu from '../DropDownMenu_component/DropDownMenu'
 function AccountHeaderItem() {
   return (
     <div>
-      <DropDownMenu menuItems={
+      <DropDownMenu
+       text='User'
+       menuItems={
         [
           {
             'icon':<SunIcon/> ,
@@ -14,7 +16,7 @@ function AccountHeaderItem() {
           },
           {
             'icon':<SunIcon/> ,
-            'text':'sign in'
+            'text':'Account'
           }
         ]
       } />
