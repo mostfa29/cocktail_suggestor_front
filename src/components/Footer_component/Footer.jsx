@@ -1,11 +1,33 @@
+import { Flex, useColorMode } from '@chakra-ui/react'
 import React from 'react'
+import MainFooter from './MainFooter'
+import SubFooter from './SubFooter'
+
+//2 main components
+  //1- MainFooter which contains all the footer data
+    //contains 3 BoxContainer Components
+       //* props: title - p(paragraph type body) - props.children(list type body) - footer 
+
+  //2- SubFooter which contains right reserved and website name
+
+  //TODO setup react router dom and add link fonctionnalities to the box component
 
 function Footer() {
+    const {colorMode,toggleColorMode}= useColorMode()
   return (
-    <div>
+    <Flex flexDirection='column' position={'fixed'} bottom='0' w={"100%"} >
+       <MainFooter color={colorMode === 'light'? 'colors.footer_light':'colors.footer_dark'} />
+       
+       <SubFooter/>
 
-        
-    </div>
+{/* <SocialMediaList    h='30' icons={
+      
+      [ <SunIcon w='30' h='30' />,
+      <SunIcon w='30' h='30'/>
+     ]
+      
+   } /> */}
+    </Flex>
   )
 }
 

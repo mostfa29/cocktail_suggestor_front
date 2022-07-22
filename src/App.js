@@ -13,9 +13,11 @@ const theme = customTheme
 function App() {
   return (
     <ChakraProvider theme={theme}>
+    <div className='app__container' style={{backgroundColor:'#f2f0fc'}} >
     <Header/>
-    <Home/>
+    
     <Footer/>
+    </div>
   </ChakraProvider>
   );
 }

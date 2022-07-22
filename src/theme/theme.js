@@ -9,8 +9,12 @@ const config = {
 
 
 const colors={
-  'header_light':"#1C436C",
-  'header_dark':"#4F4BA5"
+  'body':"#f2f0fc",
+  'header_dark':"#1C436C",
+  'header_light':"#4F4BA5",
+  'footer_dark':"#1C436C",
+  'footer_light':"#4F4BA5",
+  
 }
 
 const customTheme = extendTheme({colors:{colors}, config })
