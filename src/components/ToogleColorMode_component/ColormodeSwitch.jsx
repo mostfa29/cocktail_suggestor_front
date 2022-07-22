@@ -10,29 +10,29 @@ function ColormodeSwitch(props) {
   const {colorMode,toggleColorMode}=useColorMode()
   const dispatch=useDispatch()
   let mode = props.mode.colorMode.mode
- 
+
   const changeColorMode=()=>{
-        toggleColorMode() 
-        
-        
+        toggleColorMode()
+
+
         dispatch(toggleColorModeAction(props.mode))
-        
-        
-        
+
+
+
 
   }
   return (
     <div>
                <Switch  className="color_mode_switch__switch" size='lg' onChange={()=> changeColorMode()}>
           <div className='toogle_color_mode__icons'>
-              {console.log(props.mode.colorMode.mode)}
+              {/* {console.log(props.mode.colorMode.mode)} */}
               {
                 mode ?
-                mode==='light'?
-               <SunIcon style={{color:'#FDB813'}}/> 
+                mode==='dark'?
+               <SunIcon style={{color:'#FDB813'}}/>
                :
                 <MoonIcon style={{color:'#212121'}} />
-                
+
                 :null
                }
 
@@ -42,7 +42,7 @@ function ColormodeSwitch(props) {
   )
 }
 const mapStateToProps = (state)=> {
-  return {  
+  return {
     mode:state
   }
 }

@@ -4,14 +4,16 @@ import './App.css';
 import {  ChakraProvider } from '@chakra-ui/react'
 import customTheme from './theme/theme';
 import ToogleColorMode from './components/ToogleColorMode_component/ToogleColorMode';
+import Header from './components/Header_component/Header';
+import Home from './page/Home';
 
 
 const theme = customTheme
 function App() {
   return (
     <ChakraProvider theme={theme}>
-    <ToogleColorMode/>
-    text
+    <Header/>
+    <Home/>
   </ChakraProvider>
   );
 }
