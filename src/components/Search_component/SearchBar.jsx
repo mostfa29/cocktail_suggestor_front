@@ -1,12 +1,54 @@
 import styled from 'styled-components'
-import React from 'react'
+import React, { useState } from 'react'
 import './searchBar.css'
-import { Button, Flex, useColorMode } from '@chakra-ui/react'
+import {  useColorMode } from '@chakra-ui/react'
 import DropDownMenu from '../DropDownMenu_component/DropDownMenu'
 import { SearchIcon } from '@chakra-ui/icons'
 
+ 
+    
+    const normalStyle = {
+    	  backgroundColor: 'transparent',
+                  width: '100%',
+                  borderRadius:'0',
+                  borderLeft: '1px solid',
+                  borderTop: '1px solid',
+                  borderBottom: '1px solid',
+                  borderRight: 'none',
+                  height: '41px',
+                  borderRadius: '70px 0px 0px 70px',
+    }
+
 function SearchBar() {
-    const { colorMode, toggleColorMode } = useColorMode()
+    const { colorMode } = useColorMode()
+    const [hover, setHover] = useState(false)
+
+
+       const hoverStyle = {
+    	  backgroundColor: colorMode==='light'?'lightgray':'transparent',
+                  width: '100%',
+                  borderRadius:'0',
+                  borderLeft: '1px solid',
+                  borderTop: '1px solid',
+                  borderBottom: '1px solid',
+                  borderRight: 'none',
+                  height: '41px',
+                  borderRadius: '70px 0px 0px 70px',
+    }
+
+    const onMouseEnter = () => {
+        setHover(true)
+    }
+    
+    const onMouseLeave = () => {
+        setHover(false)
+    }
+//TODO if clicked inside the parent elemnt change the searchbar border color when clicked outside returnto the original border
+
+    const handleClick = () => {
+        
+    }
+
     
     const autoComplete = (e) => {
         console.log(e.target.value)
@@ -16,15 +58,32 @@ function SearchBar() {
         //rerender and open autoComplete
     }
   return (
-      <Flex className='searchBar__container' justifyContent={'start'} >
-          <DropDownMenu className='searchBar__category_menu'
+      <div 
+          className='searchBar__container'
+          onClick={()=>handleClick()}
+      >
+          {/*to fix dropdown menu hover style */}
+          <DropDownMenu 
+              customStyle={
+                  hover? hoverStyle: normalStyle
+              }
+              onMouseEnter={onMouseEnter}
+              onMouseLeave={onMouseLeave}
               text='search By'
               hideBoxShadow
               radioGroup
+              
               menuItems={[
-                  {'text':'search by name'},
-                  {'text':'search by ingrediant'},
-                  {'text':'search by country'},
+                  {
+                      'order': 1,
+                      'text': 'search by name'
+                  },
+                  {   'order':2,
+                      'text': 'search by ingrediant'
+                  },
+                  {   'order':3,
+                      'text': 'search by country'
+                  },
               ]}
           />
           <Input
@@ -36,8 +95,13 @@ function SearchBar() {
               colorMode={colorMode}
           
           />
-          <Button className='searchbar__search_button'><SearchIcon/> </Button>
-      </Flex>
+          <Button
+              className='searchbar__search_button'
+              colorMode={colorMode}
+          >
+              <SearchIcon />
+          </Button>
+      </div>
   )
 }
 
@@ -46,5 +110,26 @@ export default SearchBar
 const Input = styled.input`
   
     border-top: 1px solid ${props=>props.colorMode==='light'?'black':'white'};
-    border-bottom: 1px solid ${props=>props.colorMode==='light'?'black':'white'};
+    border-bottom: 1px solid ${props => props.colorMode === 'light' ? 'black' : 'white'};
+        :hover{
+        background-color: ${props => props.colorMode === 'light' ? 'lightgray' : 'none'};
+        
+    }
+
+      	transition: 500ms ease-in-out;
+`
+const Button = styled.button`
+    :hover{
+        background-color: ${props => props.colorMode === 'light' ? 'lightgray' : 'rgba(0,0,0,0.5)'};
+    }
+
+      	transition: 500ms ease-in-out;
+    padding: 0 3vh;
+    
+    
+    border-top: 1px solid ${props=>props.colorMode==='light'?'black':'white'};
+    border-left: 1px solid ${props=>props.colorMode==='light'?'black':'white'};
+    border-bottom: 1px solid ${props => props.colorMode === 'light' ? 'black' : 'white'};
+    border-right: 1px solid ${props => props.colorMode === 'light' ? 'black' : 'white'};
+    border-radius: 0px 70px 70px 0px;
 `
