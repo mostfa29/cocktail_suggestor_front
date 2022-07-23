@@ -1,11 +1,19 @@
 import styled from 'styled-components'
-import React, { useState } from 'react'
+import React, { createRef, useRef, useState } from 'react'
 import './searchBar.css'
-import {  useColorMode } from '@chakra-ui/react'
+import {  Flex, useColorMode } from '@chakra-ui/react'
 import DropDownMenu from '../DropDownMenu_component/DropDownMenu'
 import { SearchIcon } from '@chakra-ui/icons'
+import AutoCompleteBox from './AutoCompleteBox'
+import useOutsideAlerter from '../../common/outsideElementClick'
 
- 
+const searchList = [
+    'smoothie',
+    'brande with sugar',
+    'scotch coffee',
+    'beerquella',
+    'sex on the beach'
+    ]
     
     const normalStyle = {
     	  backgroundColor: 'transparent',
@@ -22,6 +30,13 @@ import { SearchIcon } from '@chakra-ui/icons'
 function SearchBar() {
     const { colorMode } = useColorMode()
     const [hover, setHover] = useState(false)
+    const [showSearchBox, setShowSearchBox] = useState(false)
+
+    const wrapperRef = useRef(null);
+    const isClickedOutside = useOutsideAlerter(wrapperRef);
+
+
+    
 
 
        const hoverStyle = {
@@ -51,13 +66,20 @@ function SearchBar() {
 
     
     const autoComplete = (e) => {
-        console.log(e.target.value)
-        //fire up Api call to search element close to the word ritten
 
+        
+
+            setShowSearchBox(e.target.value)
+
+
+        //fire up Api call to search element close to the word ritten
+        
         //pass suggestions to AutoCompleteBox 
+        
         //rerender and open autoComplete
     }
   return (
+ 
       <div 
           className='searchBar__container'
           onClick={()=>handleClick()}
@@ -86,6 +108,7 @@ function SearchBar() {
                   },
               ]}
           />
+          <Flex flexDirection={'column'} ref={wrapperRef}>
           <Input
               className='searchBar__element'
               placeholder='Get cocktail ingrediant'
@@ -95,13 +118,18 @@ function SearchBar() {
               colorMode={colorMode}
           
           />
+              <AutoCompleteBox data={searchList} searchWord={showSearchBox} show={!isClickedOutside} />
+              
+            </Flex>
           <Button
               className='searchbar__search_button'
               colorMode={colorMode}
           >
               <SearchIcon />
           </Button>
-      </div>
+          </div>
+          
+
   )
 }
 

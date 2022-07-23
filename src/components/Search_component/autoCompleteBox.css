@@ -1,5 +1,17 @@
 .autoComplete__container{
-    height: 10vw;
-    background-color: white;
+    border:1px solid;
+    border-radius: 0px 0px 7px 7px;
+    padding: 10px;
     
+}
+
+.autoComplete__container li{
+list-style-type: none;
+padding: 5px 20px;
+
+}
+
+.autoComplete__container li:hover{
+    background-color: rgba(0,0,0,0.3);
+    transition: 500ms ease-in-out;
 }

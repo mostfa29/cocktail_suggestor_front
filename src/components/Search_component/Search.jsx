@@ -1,8 +1,7 @@
 import React from 'react'
 import { Input } from '@chakra-ui/react'
 import SearchBar from './SearchBar'
-import AutoCompleteBox from './AutoCompleteBox'
-
+import './style.css'
 // 
 function Search() {
   return (
