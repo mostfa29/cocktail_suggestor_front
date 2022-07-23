@@ -1,8 +1,10 @@
 import React from 'react'
 import { Box, Container, Flex, Spacer, useColorMode } from '@chakra-ui/react'
-import ToogleColorMode from '../ToogleColorMode_component/ToogleColorMode'
+import ToogleColorMode from '../../ToogleColorMode_component/ToogleColorMode'
 import Logo from './Logo'
 import AccountHeaderItem from './AccountHeaderItem'
+
+
 function Header() {
   const {colorMode,toggleColorMode}=useColorMode()
   return (

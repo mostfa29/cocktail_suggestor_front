@@ -1,5 +1,5 @@
 import { ChevronDownIcon } from '@chakra-ui/icons'
-import { Button, Center, Flex, flexbox, Menu, MenuButton, MenuItem, MenuList, Spacer, Text, useColorMode } from '@chakra-ui/react'
+import { Button, Center, Flex, flexbox, Menu, MenuButton, MenuItem, MenuList, Radio, Spacer, Text, useColorMode } from '@chakra-ui/react'
 import React from 'react'
 
 function DropDownMenu(props) {
@@ -17,19 +17,26 @@ function DropDownMenu(props) {
 
          {
           props.menuItems?
-         <MenuList style={{color:colorMode==='light'?'black':'white',boxShadow:'1px -3px 18px 3px rgba(0,0,0,0.61)'}} >
+         <MenuList style={{color:colorMode==='light'?'black':'white',boxShadow:props.hideBoxShadow?'none':'1px -3px 18px 3px rgba(0,0,0,0.61)'}} >
             {props.menuItems.map((item)=> 
             <MenuItem  > 
-              
-              <Flex>
-                  <Center >
-                      {item.icon?item.icon:null}
-                  </Center>
+                {props.radioGroup ? 
+                  <Radio size='lg' name='1' colorScheme='green'>
+                  <Text>{item.text ? item.text : null}</Text>
+                  </Radio>
+                  :
+                  <Flex>
+                 
+                    <Center >
+                      {item.icon ? item.icon : null}
+                    </Center>
                   
-                  <Center flex='1' pl='5' >
-                      <Text>{item.text?item.text:null}</Text>
-                  </Center>
-              </Flex>
+                    <Center flex='1' pl='5' >
+                      <Text>{item.text ? item.text : null}</Text>
+                    </Center>
+                  
+                  </Flex>
+                }
             </MenuItem>
             )}
           </MenuList>

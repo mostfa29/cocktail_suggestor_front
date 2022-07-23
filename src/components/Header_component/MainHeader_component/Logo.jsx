@@ -1,6 +1,6 @@
 import { Image } from '@chakra-ui/react'
 import React from 'react'
-import logo from '../../assets/Logo.png';
+import logo from '../../../assets/Logo.png';
 
 function Logo() {
   return (
