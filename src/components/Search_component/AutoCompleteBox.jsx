@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { isContainDataWords } from '../../common/textContainword'
 import './autoCompleteBox.css'
 function AutoCompleteBox(props) {
+  //data will get maximum 10 elements per request 
   const data = props.data
   const [filtredData,setFiltredData]=useState(data)
 

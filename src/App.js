@@ -8,9 +8,10 @@ import Footer from './components/Footer_component/Footer';
 import Search from './components/Search_component/Search';
 import Header from './components/Header_component/MainHeader_component/Header';
 import ToogleColorMode from './components/ToogleColorMode_component/ToogleColorMode';
+import PopUp from './components/PopUp_component/PopUp';
 
 
-
+//TODO : store colorMode redux state inside of a useState and pass it as prop to the component
 const theme = customTheme
 function App() {
   return (
@@ -19,6 +20,9 @@ function App() {
        {/* <Header /> */}
         <ToogleColorMode/>
         <Search />
+
+
+
         
     {/* <Footer/> */}
     </div>
