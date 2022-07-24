@@ -16,7 +16,7 @@ function Footer() {
     const {colorMode,toggleColorMode}= useColorMode()
   return (
     <Flex flexDirection='column' position={'fixed'} bottom='0' w={"100%"} >
-       <MainFooter color={colorMode === 'light'? 'colors.footer_light':'colors.footer_dark'} />
+       <MainFooter color={colorMode === 'light'? '#4F4BA5':'#1C436C'} />
        
        <SubFooter/>
 

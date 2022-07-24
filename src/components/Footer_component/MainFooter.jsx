@@ -1,10 +1,12 @@
-import { Center } from '@chakra-ui/react'
+import { Center, useColorMode } from '@chakra-ui/react'
 import React from 'react'
+import styled from 'styled-components'
 import BoxContainer from '../BoxContainer_component/BoxContainer'
 
 function MainFooter(props) {
+
   return (
-    <Center minH='20vh' backgroundColor={props.color} justifyContent='start'>
+    <Container minH='20vh' backgroundColor={props.color} >
         <BoxContainer title='test' w='40vw' h='100%'>
           ttttttttttttttttttttttttttt
           ttttttttttttttttttttttttttttt
@@ -32,8 +34,17 @@ function MainFooter(props) {
             'elem4',
           ]}/>
 
-    </Center>
+    </Container>
   )
 }
 
 export default MainFooter
+
+const Container = styled.div`
+display: flex;
+background-color: ${props => props.backgroundColor};
+/* @media only screen and (max-width: 600px) {
+  justify-content: center;
+  flex-direction: column;
+} */
+`

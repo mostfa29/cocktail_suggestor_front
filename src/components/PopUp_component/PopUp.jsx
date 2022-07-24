@@ -42,19 +42,32 @@ function PopUp(props) {
   return (
       <Container props={props} colorMode={colorMode} style={isActive?{}:{'transition':' 2s ease-in-out','display':'none'}}>
       {props.section ?
-        <SectionContainer>
+        <BodyContainer>
+        <SectionContainer colorMode={colorMode}>
           {props.section.map(item =>
-            <SectionElem key={item.id} onClick={()=>{console.log('clicked')}}>
+            <SectionElem colorMode={colorMode} key={item.id} onClick={()=>{console.log('clicked')}}>
                {item.name}
             </SectionElem>
             )}
-        </SectionContainer>
+          </SectionContainer>
+          <SectionDetails popupType={props.advanced} >
+            <div>
+            test
+            </div>
+          </SectionDetails>
+          </BodyContainer>
       :null}
           
       {props.advanced ?
-              <BottomContainer>
-                  {props.advanced.map(item =>
-                    <Button key={item.id} style={item.style?item.style:{}}>{item.name?item.name:console.log('popup advanced mode require defining name for button elements')} </Button>
+              <BottomContainer colorMode={colorMode}>
+          {props.advanced.map(item =>
+            <Button
+              key={item.id}
+              style={item.style ? item.style : {}}
+              onClick={() => handleClick()}
+                    >
+                      {item.name ? item.name : console.log('popup advanced mode require defining name for button elements')}
+                    </Button>
                     )}
               </BottomContainer>
             : null}  
@@ -67,10 +80,11 @@ export default PopUp
 const Container = styled.div`
 
 
-
+  overflow-x: hidden;
+  overflow-y: hidden;
 border: 0.5px solid ${props=>props.colorMode === 'light'?'rgba(255,255,255,0.2)':'rgba(0,0,0,0.2)'} ; 
-width: 80vw;
-height: 80vh;
+width: 85vw;
+height: 85vh;
 background-color:${props=>props.colorMode === 'light'?'#ffffff':'#1a202c'} ;
 align-items: center;
 border-radius: 10px;
@@ -86,20 +100,61 @@ border-radius: 10px;
 `
 
 const BottomContainer = styled.div`
-border-top: 1px solid ${colorMode => colorMode === 'light' ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.2)'};
+  overflow-x:auto;
+  overflow-y: hidden;
+border-top: 0.5px solid ${props => props.colorMode === 'light' ? 'rgba(0,0,0,0.2)' : 'rgba(255,255,255,0.2)'};
 padding: 10px;
+background-color:${props=>props.colorMode === 'light'?'#ffffff':'#1a202c'} ;
+
 display: flex;
 justify-content: end;
 gap: 2vh;
 width: 100%;
 position: absolute;
 bottom: 0;
+height: 13%;
 `
 
-const SectionContainer = styled.div`
+const SectionContainer = styled.ul`
+  overflow-x:hidden;
+  overflow-y: auto;
+border-right: 0.5px solid ${props => props.colorMode === 'light' ? 'rgba(0,0,0,0.2)': 'rgba(255,255,255,0.2)' };
+width: 30%;
+height: 100%;
+padding: 15px;
+display: flex;
+flex-direction: column;
+justify-content : start ;
 
 
 `
-const SectionElem = styled.div`
+const SectionElem = styled.li`
+list-style-type: none;
 
+padding: 15px;
+:hover{
+  background-color: ${props=>props.colorMode === 'light'? 'rgba(0,0,0,0.1)' : 'rgba(0,0,0,0.4)'};
+}
+
+
+
+`
+
+const BodyContainer = styled.div`
+width: 100%;
+height: 100%;
+display: flex;
+flex: 1;
+gap: 0;
+`
+
+const SectionDetails = styled.div`
+flex: 70%;
+  overflow-x:hidden;
+  overflow-y: auto;
+  height: ${props => props.popupType ? "87%" : '100%'};
+  padding: 20px;
+box-shadow: 10px -8px 12px -6px rgba(0,0,0,0.75) inset;
+-webkit-box-shadow: 10px -8px 12px -6px rgba(0,0,0,0.75) inset;
+-moz-box-shadow: 10px -8px 12px -6px rgba(0,0,0,0.75) inset;
 `
