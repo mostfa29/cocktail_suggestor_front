@@ -1,6 +1,6 @@
 import React from 'react'
-import SubHeader from '../Subheader_component/SubHeader'
 import Header from './MainHeader_component/Header'
+import SubHeader from './SubHeader_component/SubHeader'
 
 function FullHeader() {
   return (

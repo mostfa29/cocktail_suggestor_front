@@ -15,7 +15,13 @@ import SubFooter from './SubFooter'
 function Footer() {
     const {colorMode,toggleColorMode}= useColorMode()
   return (
-    <Flex flexDirection='column' position={'fixed'} bottom='0' w={"100%"} >
+    <Flex
+      flexDirection='column'
+      style={{
+        position:'relative',
+        height:'auto',
+      }}
+    >
        <MainFooter color={colorMode === 'light'? '#4F4BA5':'#1C436C'} />
        
        <SubFooter/>

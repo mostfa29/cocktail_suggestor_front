@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Button, Input } from '@chakra-ui/react'
 import SearchBar from './SearchBar'
 import './style.css'
@@ -7,8 +7,10 @@ import { EmailIcon } from '@chakra-ui/icons'
 import styled from 'styled-components'
 
 function Search() {
+  const [openPopoup,setOpenpopup]=useState(false)
   const openPopUp = () => {
-    
+    setOpenpopup(!openPopoup)
+    console.log(openPopoup)
   }
   return (
     <div className='search__container'>
@@ -17,7 +19,8 @@ function Search() {
             Filter
       </Button>
       {/*<AutoCompleteBox/>*/}
-              <PopUp
+      <PopUp
+          open={openPopoup}
           advanced={ 
             [
               {
@@ -32,7 +35,7 @@ function Search() {
         
         section={[
            {
-            'id': 2,
+            'id': 1,
             'name': 'Ingrediants',
             'elems':[]
           },

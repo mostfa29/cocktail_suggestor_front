@@ -5,11 +5,7 @@ import customTheme from './theme/theme';
 
 import Home from './page/Home';
 import Footer from './components/Footer_component/Footer';
-import Search from './components/Search_component/Search';
-import Header from './components/Header_component/MainHeader_component/Header';
-import ToogleColorMode from './components/ToogleColorMode_component/ToogleColorMode';
-import PopUp from './components/PopUp_component/PopUp';
-import SubHeader from './components/Subheader_component/SubHeader';
+
 import FullHeader from './components/Header_component/FullHeader';
 
 
@@ -20,7 +16,7 @@ function App() {
     <ChakraProvider theme={theme}>
     <div className='app__container' >
        <FullHeader/>
-       
+       <Home/>
 
 
 

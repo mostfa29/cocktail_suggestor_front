@@ -34,13 +34,16 @@ function PopUp(props) {
     const { colorMode, toggleColorMode } = useColorMode()
     const [isActive, setIsActive] = useState(true);
     
-    const handleClick = () => {
+ 
+  const handleClick = () => {
         // 👇️ toggle
-        setIsActive(current => !current);
+    setIsActive(!props.open);
+    
+    
     }
-
+  
   return (
-      <Container props={props} colorMode={colorMode} style={isActive?{}:{'transition':' 2s ease-in-out','display':'none'}}>
+      <Container props={props} colorMode={colorMode} style={( props.open && isActive)  ?{}:{'transition':' 2s ease-in-out','display':'none'}}>
       {props.section ?
         <BodyContainer>
         <SectionContainer colorMode={colorMode}>
@@ -79,7 +82,7 @@ export default PopUp
 
 const Container = styled.div`
 
-
+z-index: 99999;
   overflow-x: hidden;
   overflow-y: hidden;
 border: 0.5px solid ${props=>props.colorMode === 'light'?'rgba(255,255,255,0.2)':'rgba(0,0,0,0.2)'} ; 
